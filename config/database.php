@@ -13,6 +13,10 @@ return [
             'password'  => env('DB_PASSWORD', ''),
             'charset'   => env('DB_CHARSET', 'utf8'),
             'strict'    => env('DB_STRICT_MODE', false),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
         ],
     ]
 ];
