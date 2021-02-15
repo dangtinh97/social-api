@@ -26,7 +26,7 @@ class ChatService
     {
         $findChatManager = $this->chatManagerRepository->findChat(Auth::id(),(int)$data['user_id_take']);
         if (is_null($findChatManager)) {
-            $findChatManager = $this->model::create([
+            $findChatManager = $this->chatManagerRepository->create([
                 'user_id_send' => Auth::id(),
                 'user_id_take' => (int)$data['user_id_take'],
                 'count' => 0
