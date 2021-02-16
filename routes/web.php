@@ -26,4 +26,5 @@ $router->group(['prefix'=>'users'],function ()use ($router){
 $router->group(['prefix'=>'chats','middleware' => 'api',],function ()use ($router){
     $router->post('/','ChatController@store');
     $router->get('/','ChatController@chatWithUser');
+    $router->get('/manager','ChatController@index');
 });

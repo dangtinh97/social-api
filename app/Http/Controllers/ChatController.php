@@ -22,7 +22,8 @@ class ChatController extends Controller
     }
 
     public function index(Request $request){
-
+        $list = $this->chatService->listUser($request->all());
+        return response()->json($list->toArray());
     }
 
     public function chatWithUser(Request $request){
