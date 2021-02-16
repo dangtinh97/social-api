@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Services\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -38,6 +39,18 @@ class UserController extends Controller
     public function search(Request $request){
        $find =  $this->userService->findUser($request->get('email'));
        return response()->json($find->toArray());
+    }
+
+    public function login(Request $request){
+        $token = Auth::guard('api')->attempt([
+            'mail_id'=>$request->get('mail_id'),
+            'password'=>$request->get('mail_id'),
+        ]);
+        return response()->json([
+            'status'=>200,
+            'content'=>'Đăng nhập',
+            'data'=>$token,
+        ]);
     }
 
     //
