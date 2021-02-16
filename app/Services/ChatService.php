@@ -40,7 +40,8 @@ class ChatService
             'user_id_take' => (int)$data['user_id_take'],
             'message' => htmlspecialchars($data['message']),
             'type' => $data['type'],
-            'attachment_id' => $data['attachment_id'] ?? "",
+            'attachment_id' => $data['attachment_id'] ?? 0,
+            'seen'=>false,
             'status' => 'NORMAL',
             'chat_manager_id' => $findChatManager->id,
         ]);
