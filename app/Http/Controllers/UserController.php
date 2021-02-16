@@ -48,8 +48,9 @@ class UserController extends Controller
         ]);
         return response()->json([
             'status'=>200,
+            'success'=>true,
             'content'=>'Đăng nhập',
-            'data'=>$token,
+            'data'=>['token'=>$token],
         ]);
     }
 
